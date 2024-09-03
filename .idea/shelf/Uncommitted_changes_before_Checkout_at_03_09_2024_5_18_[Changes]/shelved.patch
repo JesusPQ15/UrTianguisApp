@@ -1,0 +1,152 @@
+Index: src/main/java/pe/edu/pe/tf/entities/Tienda.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package pe.edu.pe.tf.entities;\r\n\r\nimport jakarta.persistence.*;\r\n\r\n@Entity\r\n@Table(name = \"tienda\")\r\npublic class Tienda {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    private int Id_tienda;\r\n    @Column(name = \"Nombre\", nullable = false, length = 50)\r\n    private String Nombre;\r\n    @Column(name = \"Ubicacion\", nullable = false, length = 100)\r\n    private String Ubicacion;\r\n    @Column(name = \"Logo\", nullable = false, length = 300)\r\n    private String Logo;\r\n    @ManyToOne\r\n    @JoinColumn(name = \"Id_usuario\")\r\n    private Usuario Us;\r\n\r\n    public Tienda() {\r\n\r\n    }\r\n\r\n    public Tienda(int id_tienda, String nombre, String ubicacion, String logo, Usuario us) {\r\n        Id_tienda = id_tienda;\r\n        Nombre = nombre;\r\n        Ubicacion = ubicacion;\r\n        Logo = logo;\r\n        Us = us;\r\n    }\r\n\r\n    public int getId_tienda() {\r\n        return Id_tienda;\r\n    }\r\n\r\n    public void setId_tienda(int id_tienda) {\r\n        Id_tienda = id_tienda;\r\n    }\r\n\r\n    public String getNombre() {\r\n        return Nombre;\r\n    }\r\n\r\n    public void setNombre(String nombre) {\r\n        Nombre = nombre;\r\n    }\r\n\r\n    public String getUbicacion() {\r\n        return Ubicacion;\r\n    }\r\n\r\n    public void setUbicacion(String ubicacion) {\r\n        Ubicacion = ubicacion;\r\n    }\r\n\r\n    public String getLogo() {\r\n        return Logo;\r\n    }\r\n\r\n    public void setLogo(String logo) {\r\n        Logo = logo;\r\n    }\r\n\r\n    public Usuario getUs() {\r\n        return Us;\r\n    }\r\n\r\n    public void setUs(Usuario us) {\r\n        Us = us;\r\n    }\r\n}
+===================================================================
+diff --git a/src/main/java/pe/edu/pe/tf/entities/Tienda.java b/src/main/java/pe/edu/pe/tf/entities/Tienda.java
+--- a/src/main/java/pe/edu/pe/tf/entities/Tienda.java	(revision b0e39bc1d4e2caf71194160464c25a46a63bd329)
++++ b/src/main/java/pe/edu/pe/tf/entities/Tienda.java	(date 1725314244599)
+@@ -2,6 +2,8 @@
+ 
+ import jakarta.persistence.*;
+ 
++import java.math.BigDecimal;
++
+ @Entity
+ @Table(name = "tienda")
+ public class Tienda {
+@@ -10,8 +12,10 @@
+     private int Id_tienda;
+     @Column(name = "Nombre", nullable = false, length = 50)
+     private String Nombre;
+-    @Column(name = "Ubicacion", nullable = false, length = 100)
+-    private String Ubicacion;
++    @Column(name = "Altitud", nullable = false, precision = 9, scale = 6)
++    private BigDecimal altitud;
++    @Column(name = "Latitud", nullable = false, precision = 9, scale = 6)
++    private BigDecimal Latitud;
+     @Column(name = "Logo", nullable = false, length = 300)
+     private String Logo;
+     @ManyToOne
+@@ -22,10 +26,11 @@
+ 
+     }
+ 
+-    public Tienda(int id_tienda, String nombre, String ubicacion, String logo, Usuario us) {
++    public Tienda(int id_tienda, String nombre, BigDecimal altitud, BigDecimal latitud, String logo, Usuario us) {
+         Id_tienda = id_tienda;
+         Nombre = nombre;
+-        Ubicacion = ubicacion;
++        this.altitud = altitud;
++        Latitud = latitud;
+         Logo = logo;
+         Us = us;
+     }
+@@ -46,12 +51,20 @@
+         Nombre = nombre;
+     }
+ 
+-    public String getUbicacion() {
+-        return Ubicacion;
++    public BigDecimal getAltitud() {
++        return altitud;
++    }
++
++    public void setAltitud(BigDecimal altitud) {
++        this.altitud = altitud;
++    }
++
++    public BigDecimal getLatitud() {
++        return Latitud;
+     }
+ 
+-    public void setUbicacion(String ubicacion) {
+-        Ubicacion = ubicacion;
++    public void setLatitud(BigDecimal latitud) {
++        Latitud = latitud;
+     }
+ 
+     public String getLogo() {
+Index: src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring.application.name=TF_0.1\r\nspring.jpa.database=postgresql\r\nspring.jpa.show-sql=true\r\nspring.jpa.hibernate.ddl-auto=update\r\n\r\nspring.datasource.driver-class-name=org.postgresql.Driver\r\nspring.datasource.url=jdbc:postgresql://localhost/TF\r\nspring.datasource.username=postgres\r\nspring.datasource.password=fabri\r\nserver.port=8081
+===================================================================
+diff --git a/src/main/resources/application.properties b/src/main/resources/application.properties
+--- a/src/main/resources/application.properties	(revision b0e39bc1d4e2caf71194160464c25a46a63bd329)
++++ b/src/main/resources/application.properties	(date 1725358602435)
+@@ -4,7 +4,7 @@
+ spring.jpa.hibernate.ddl-auto=update
+ 
+ spring.datasource.driver-class-name=org.postgresql.Driver
+-spring.datasource.url=jdbc:postgresql://localhost/TF
++spring.datasource.url=jdbc:postgresql://localhost/UrTianguisDB
+ spring.datasource.username=postgres
+ spring.datasource.password=fabri
+ server.port=8081
+\ No newline at end of file
+Index: src/main/java/pe/edu/pe/tf/dtos/TiendaDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package pe.edu.pe.tf.dtos;\r\nimport jakarta.persistence.Column;\r\nimport jakarta.persistence.GeneratedValue;\r\nimport jakarta.persistence.GenerationType;\r\nimport pe.edu.pe.tf.entities.Usuario;\r\n\r\npublic class TiendaDTO {\r\n    private int Id_tienda;\r\n    private String Nombre;\r\n    private String Ubicacion;\r\n    private String Logo;\r\n    private Usuario Us;\r\n\r\n    public int getId_tienda() {\r\n        return Id_tienda;\r\n    }\r\n\r\n    public void setId_tienda(int id_tienda) {\r\n        Id_tienda = id_tienda;\r\n    }\r\n\r\n    public String getNombre() {\r\n        return Nombre;\r\n    }\r\n\r\n    public void setNombre(String nombre) {\r\n        Nombre = nombre;\r\n    }\r\n\r\n    public String getUbicacion() {\r\n        return Ubicacion;\r\n    }\r\n\r\n    public void setUbicacion(String ubicacion) {\r\n        Ubicacion = ubicacion;\r\n    }\r\n\r\n    public String getLogo() {\r\n        return Logo;\r\n    }\r\n\r\n    public void setLogo(String logo) {\r\n        Logo = logo;\r\n    }\r\n\r\n    public Usuario getUs() {\r\n        return Us;\r\n    }\r\n\r\n    public void setUs(Usuario us) {\r\n        Us = us;\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/pe/edu/pe/tf/dtos/TiendaDTO.java b/src/main/java/pe/edu/pe/tf/dtos/TiendaDTO.java
+--- a/src/main/java/pe/edu/pe/tf/dtos/TiendaDTO.java	(revision b0e39bc1d4e2caf71194160464c25a46a63bd329)
++++ b/src/main/java/pe/edu/pe/tf/dtos/TiendaDTO.java	(date 1725314244609)
+@@ -4,10 +4,13 @@
+ import jakarta.persistence.GenerationType;
+ import pe.edu.pe.tf.entities.Usuario;
+ 
++import java.math.BigDecimal;
++
+ public class TiendaDTO {
+     private int Id_tienda;
+     private String Nombre;
+-    private String Ubicacion;
++    private BigDecimal Altitud;
++    private BigDecimal Latitud;
+     private String Logo;
+     private Usuario Us;
+ 
+@@ -27,12 +30,20 @@
+         Nombre = nombre;
+     }
+ 
+-    public String getUbicacion() {
+-        return Ubicacion;
++    public BigDecimal getAltitud() {
++        return Altitud;
++    }
++
++    public void setAltitud(BigDecimal altitud) {
++        Altitud = altitud;
++    }
++
++    public BigDecimal getLatitud() {
++        return Latitud;
+     }
+ 
+-    public void setUbicacion(String ubicacion) {
+-        Ubicacion = ubicacion;
++    public void setLatitud(BigDecimal latitud) {
++        Latitud = latitud;
+     }
+ 
+     public String getLogo() {
+Index: src/main/java/pe/edu/pe/tf/entities/Pedido.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package pe.edu.pe.tf.entities;\r\n\r\nimport jakarta.persistence.*;\r\n\r\nimport java.time.LocalDate;\r\nimport java.time.LocalDateTime;\r\n\r\n@Entity\r\n@Table(name=\"pedido\")\r\npublic class Pedido {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    private int Id_pedido;\r\n    @Column(name = \"Estado_pedido\",nullable = false, length = 20)\r\n    private String Estado_pedido;\r\n    @Column(name = \"Fecha_solicitud\",nullable = false)\r\n    private LocalDate Fecha_solicitud;\r\n    @Column(name = \"Fecha_entrega\",nullable = false,length = 10)\r\n    private LocalDateTime Fecha_entrega;\r\n    @Column(name = \"I_fecha_creacion\\n\",nullable = false,length = 10)\r\n    private LocalDate I_fecha_creacion;\r\n    @Column(name = \"I_creado_por\",nullable = false, length = 40)\r\n    private String I_creado_por;\r\n    @OneToOne\r\n    @JoinColumn(name = \"Id_pago\")\r\n    private Pago Pa;\r\n    @ManyToOne\r\n    @JoinColumn(name = \"Id_usuario\")\r\n    private Usuario Us;\r\n    @ManyToOne\r\n    @JoinColumn(name = \"Id_notificacion\")\r\n    private Notificaciones Nt;\r\n\r\n    public Pedido() {\r\n\r\n    }\r\n\r\n    public Pedido(int id_pedido, String estado_pedido, LocalDate fecha_solicitud, LocalDateTime fecha_entrega, LocalDate i_fecha_creacion, String i_creado_por, Pago pa, Usuario us, Notificaciones nt) {\r\n        Id_pedido = id_pedido;\r\n        Estado_pedido = estado_pedido;\r\n        Fecha_solicitud = fecha_solicitud;\r\n        Fecha_entrega = fecha_entrega;\r\n        I_fecha_creacion = i_fecha_creacion;\r\n        I_creado_por = i_creado_por;\r\n        Pa = pa;\r\n        Us = us;\r\n        Nt = nt;\r\n    }\r\n\r\n    public int getId_pedido() {\r\n        return Id_pedido;\r\n    }\r\n\r\n    public void setId_pedido(int id_pedido) {\r\n        Id_pedido = id_pedido;\r\n    }\r\n\r\n    public String getEstado_pedido() {\r\n        return Estado_pedido;\r\n    }\r\n\r\n    public void setEstado_pedido(String estado_pedido) {\r\n        Estado_pedido = estado_pedido;\r\n    }\r\n\r\n    public LocalDate getFecha_solicitud() {\r\n        return Fecha_solicitud;\r\n    }\r\n\r\n    public void setFecha_solicitud(LocalDate fecha_solicitud) {\r\n        Fecha_solicitud = fecha_solicitud;\r\n    }\r\n\r\n    public LocalDateTime getFecha_entrega() {\r\n        return Fecha_entrega;\r\n    }\r\n\r\n    public void setFecha_entrega(LocalDateTime fecha_entrega) {\r\n        Fecha_entrega = fecha_entrega;\r\n    }\r\n\r\n    public LocalDate getI_fecha_creacion() {\r\n        return I_fecha_creacion;\r\n    }\r\n\r\n    public void setI_fecha_creacion(LocalDate i_fecha_creacion) {\r\n        I_fecha_creacion = i_fecha_creacion;\r\n    }\r\n\r\n    public String getI_creado_por() {\r\n        return I_creado_por;\r\n    }\r\n\r\n    public void setI_creado_por(String i_creado_por) {\r\n        I_creado_por = i_creado_por;\r\n    }\r\n\r\n    public Pago getPa() {\r\n        return Pa;\r\n    }\r\n\r\n    public void setPa(Pago pa) {\r\n        Pa = pa;\r\n    }\r\n\r\n    public Usuario getUs() {\r\n        return Us;\r\n    }\r\n\r\n    public void setUs(Usuario us) {\r\n        Us = us;\r\n    }\r\n\r\n    public Notificaciones getNt() {\r\n        return Nt;\r\n    }\r\n\r\n    public void setNt(Notificaciones nt) {\r\n        Nt = nt;\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/pe/edu/pe/tf/entities/Pedido.java b/src/main/java/pe/edu/pe/tf/entities/Pedido.java
+--- a/src/main/java/pe/edu/pe/tf/entities/Pedido.java	(revision b0e39bc1d4e2caf71194160464c25a46a63bd329)
++++ b/src/main/java/pe/edu/pe/tf/entities/Pedido.java	(date 1725250967314)
+@@ -17,7 +17,7 @@
+     private LocalDate Fecha_solicitud;
+     @Column(name = "Fecha_entrega",nullable = false,length = 10)
+     private LocalDateTime Fecha_entrega;
+-    @Column(name = "I_fecha_creacion\n",nullable = false,length = 10)
++    @Column(name = "I_fecha_creacion",nullable = false,length = 10)
+     private LocalDate I_fecha_creacion;
+     @Column(name = "I_creado_por",nullable = false, length = 40)
+     private String I_creado_por;
