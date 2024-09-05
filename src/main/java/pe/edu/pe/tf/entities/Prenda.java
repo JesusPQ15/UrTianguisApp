@@ -31,19 +31,17 @@ public class Prenda {
     private String I_creado_por;
     @Column(name = "I_modificado_por",nullable = false,length = 40)
     private String I_modificado_por;
-    @Column(name = "TIPO_PRENDA_Id_tipo_prenda",nullable = false)
-    private int TIPO_PRENDA_Id_tipo_prenda;
-    @Column(name = "TIENDA_Id_tienda",nullable = false)
-    private int TIENDA_Id_tienda;
+    @ManyToOne
+    @JoinColumn(name = "Id_tipo_prenda")
+    private Tipo_Prenda Tp;
+    @ManyToOne
+    @JoinColumn(name = "Id_tienda")
+    private Tienda Ti;
 
     public Prenda() {
     }
 
-    public Prenda(int id_prenda, String nombre, String descripcion,
-                  float precio, String talla, int stock, int veces_usada,
-                  LocalDate i_fecha_creacion, LocalDate i_fecha_modificacion,
-                  String i_creado_por, String i_modificado_por,
-                  int TIPO_PRENDA_Id_tipo_prenda, int TIENDA_Id_tienda) {
+    public Prenda(int id_prenda, String nombre, String descripcion, float precio, String talla, int stock, int veces_usada, LocalDate i_fecha_creacion, LocalDate i_fecha_modificacion, String i_creado_por, String i_modificado_por, Tipo_Prenda tp, Tienda ti) {
         Id_prenda = id_prenda;
         Nombre = nombre;
         Descripcion = descripcion;
@@ -55,8 +53,8 @@ public class Prenda {
         I_fecha_modificacion = i_fecha_modificacion;
         I_creado_por = i_creado_por;
         I_modificado_por = i_modificado_por;
-        this.TIPO_PRENDA_Id_tipo_prenda = TIPO_PRENDA_Id_tipo_prenda;
-        this.TIENDA_Id_tienda = TIENDA_Id_tienda;
+        Tp = tp;
+        Ti = ti;
     }
 
     public int getId_prenda() {
@@ -147,19 +145,19 @@ public class Prenda {
         I_modificado_por = i_modificado_por;
     }
 
-    public int getTIPO_PRENDA_Id_tipo_prenda() {
-        return TIPO_PRENDA_Id_tipo_prenda;
+    public Tipo_Prenda getTp() {
+        return Tp;
     }
 
-    public void setTIPO_PRENDA_Id_tipo_prenda(int TIPO_PRENDA_Id_tipo_prenda) {
-        this.TIPO_PRENDA_Id_tipo_prenda = TIPO_PRENDA_Id_tipo_prenda;
+    public void setTp(Tipo_Prenda tp) {
+        Tp = tp;
     }
 
-    public int getTIENDA_Id_tienda() {
-        return TIENDA_Id_tienda;
+    public Tienda getTi() {
+        return Ti;
     }
 
-    public void setTIENDA_Id_tienda(int TIENDA_Id_tienda) {
-        this.TIENDA_Id_tienda = TIENDA_Id_tienda;
+    public void setTi(Tienda ti) {
+        Ti = ti;
     }
 }

@@ -1,4 +1,8 @@
 package pe.edu.pe.tf.dtos;
+import pe.edu.pe.tf.entities.Prenda;
+import pe.edu.pe.tf.entities.Tipo_Ocasion;
+import pe.edu.pe.tf.entities.Usuario;
+
 import java.time.LocalDate;
 
 public class OutfitDTO {
@@ -11,9 +15,9 @@ public class OutfitDTO {
     private LocalDate I_fecha_modificacion;
     private String I_creador_por;
     private String I_modificado_por;
-    private int USUARIO_Id_usuario;
-    private int PRENDA_Id_prenda;
-    private int TIPO_OCASION_Id_tipo_ocasion;
+    private Usuario Us;
+    private Prenda Pr;
+    private Tipo_Ocasion To;
 
     public int getOutfit() {
         return outfit;
@@ -87,27 +91,27 @@ public class OutfitDTO {
         I_modificado_por = i_modificado_por;
     }
 
-    public int getUSUARIO_Id_usuario() {
-        return USUARIO_Id_usuario;
+    public Usuario getUs() {
+        return Us;
     }
 
-    public void setUSUARIO_Id_usuario(int USUARIO_Id_usuario) {
-        this.USUARIO_Id_usuario = USUARIO_Id_usuario;
+    public void setUs(Usuario us) {
+        Us = us;
     }
 
-    public int getPRENDA_Id_prenda() {
-        return PRENDA_Id_prenda;
+    public Prenda getPr() {
+        return Pr;
     }
 
-    public void setPRENDA_Id_prenda(int PRENDA_Id_prenda) {
-        this.PRENDA_Id_prenda = PRENDA_Id_prenda;
+    public void setPr(Prenda pr) {
+        Pr = pr;
     }
 
-    public int getTIPO_OCASION_Id_tipo_ocasion() {
-        return TIPO_OCASION_Id_tipo_ocasion;
+    public Tipo_Ocasion getTipo_Ocasion() {
+        return To;
     }
 
-    public void setTIPO_OCASION_Id_tipo_ocasion(int TIPO_OCASION_Id_tipo_ocasion) {
-        this.TIPO_OCASION_Id_tipo_ocasion = TIPO_OCASION_Id_tipo_ocasion;
+    public void setTipo_Ocasion(Tipo_Ocasion to) {
+        this.To = to;
     }
 }

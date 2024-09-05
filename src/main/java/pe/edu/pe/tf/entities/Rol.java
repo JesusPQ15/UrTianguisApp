@@ -3,16 +3,15 @@ package pe.edu.pe.tf.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Rol")
+@Table(name = "rol")
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id_rol;
-    @Column(name = "Tipo_rol",nullable = false,length = 50)
+    @Column(name = "Tipo_rol", nullable = false, length = 50)
     private String Tipo_rol;
 
-    public Rol() {
-    }
+    public Rol() { }
 
     public Rol(int id_rol, String tipo_rol) {
         Id_rol = id_rol;
@@ -35,3 +34,7 @@ public class Rol {
         Tipo_rol = tipo_rol;
     }
 }
+
+
+
+

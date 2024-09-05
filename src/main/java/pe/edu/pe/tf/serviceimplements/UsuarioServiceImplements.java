@@ -32,6 +32,11 @@ public class UsuarioServiceImplements implements IUsuarioService {
     }
 
     @Override
+    public Usuario listId(int id) {
+        return uR.findById(id).orElse(new Usuario());
+    }
+
+    @Override
     public String mesMenosUsuarios() {
         List<Object[]> mesMenor = uR.mesMenosUsuarios();
         if (!mesMenor.isEmpty()) {

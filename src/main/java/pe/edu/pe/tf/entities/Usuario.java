@@ -36,15 +36,18 @@ public class Usuario {
     private String I_creado_por;
     @Column(name = "I_modificado_por",nullable = false,length = 40)
     private String I_modificado_por;
-    @Column(name = "DEPARTAMENTO_Id_Departamento",nullable = false)
-    private int Id_Departamento;
-    @Column(name = "Rol_id_rol",nullable = false)
-    private int Rol_id_rol;
+    @ManyToOne
+    @JoinColumn(name = "Id_departamento")
+    private Departamento Dp;
+    @ManyToOne
+    @JoinColumn(name = "Id_rol")
+    private Rol Ro;
+
     public Usuario() {
 
     }
 
-    public Usuario(int id_usuario, String nombre, String apellido, String correo, String sexo, String dni, String contrasena, LocalDate fecha_Nacimiento, String telefono, String username, LocalDate i_fecha_creacion, LocalDate i_fecha_modificacion, String i_creado_por, String i_modificado_por, int id_Departamento, int rol_id_rol) {
+    public Usuario(int id_usuario, String nombre, String apellido, String correo, String sexo, String dni, String contrasena, LocalDate fecha_Nacimiento, String telefono, String username, LocalDate i_fecha_creacion, LocalDate i_fecha_modificacion, String i_creado_por, String i_modificado_por, Departamento dp, Rol ro) {
         Id_usuario = id_usuario;
         Nombre = nombre;
         Apellido = apellido;
@@ -59,8 +62,8 @@ public class Usuario {
         I_fecha_modificacion = i_fecha_modificacion;
         I_creado_por = i_creado_por;
         I_modificado_por = i_modificado_por;
-        Id_Departamento = id_Departamento;
-        Rol_id_rol = rol_id_rol;
+        Dp = dp;
+        Ro = ro;
     }
 
     public int getId_usuario() {
@@ -175,19 +178,19 @@ public class Usuario {
         I_modificado_por = i_modificado_por;
     }
 
-    public int getId_Departamento() {
-        return Id_Departamento;
+    public Departamento getDp() {
+        return Dp;
     }
 
-    public void setId_Departamento(int id_Departamento) {
-        Id_Departamento = id_Departamento;
+    public void setDp(Departamento dp) {
+        Dp = dp;
     }
 
-    public int getRol_id_rol() {
-        return Rol_id_rol;
+    public Rol getRo() {
+        return Ro;
     }
 
-    public void setRol_id_rol(int rol_id_rol) {
-        Rol_id_rol = rol_id_rol;
+    public void setRo(Rol ro) {
+        Ro = ro;
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.pe.tf.dtos.Det_PedidoDTO;
 import pe.edu.pe.tf.dtos.PrendaDTO;
+import pe.edu.pe.tf.dtos.TiendaDTO;
 import pe.edu.pe.tf.dtos.UsuarioDTO;
 import pe.edu.pe.tf.entities.Prenda;
 import pe.edu.pe.tf.repositories.IPrendaRepository;
@@ -31,6 +32,14 @@ public class PrendaController {
         Prenda ve=m.map(dto,Prenda.class);
         pR.insert(ve);
     }
+
+    @GetMapping("/{id}")
+    public PrendaDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m=new ModelMapper();
+        PrendaDTO dto=m.map(pR.listId(id),PrendaDTO.class);
+        return dto;
+    }
+
     @PutMapping
     public void modificar(@RequestBody PrendaDTO dto){
         ModelMapper m=new ModelMapper();

@@ -22,13 +22,15 @@ public class Pago {
     private String Num_tarjeta_cliente;
     @Column(name = "Telefono_cliente",nullable = false,length = 13)
     private String Telefono_cliente;
-    @Column(name = "TIPO_PAGO_Id_tipo_pago",nullable = false)
-    private int Tipo_Pago_Id_tipo_pago;
+    @ManyToOne
+    @JoinColumn(name = "Id_tipo_pago")
+    private Tipo_Pago Tp;
 
     public Pago() {
     }
 
-    public Pago(int id_pago, float monto, LocalDate fecha_pago, LocalDate fecha_vencimiento, String cod_validacion, String num_tarjeta_cliente, String telefono_cliente, int tipo_Pago_Id_tipo_pago) {
+    public Pago(int id_pago, float monto, LocalDate fecha_pago, LocalDate fecha_vencimiento, String cod_validacion,
+                String num_tarjeta_cliente, String telefono_cliente, Tipo_Pago tp) {
         Id_pago = id_pago;
         Monto = monto;
         Fecha_pago = fecha_pago;
@@ -36,7 +38,7 @@ public class Pago {
         Cod_validacion = cod_validacion;
         Num_tarjeta_cliente = num_tarjeta_cliente;
         Telefono_cliente = telefono_cliente;
-        Tipo_Pago_Id_tipo_pago = tipo_Pago_Id_tipo_pago;
+        Tp = tp;
     }
 
     public int getId_pago() {
@@ -52,7 +54,7 @@ public class Pago {
     }
 
     public void setMonto(float monto) {
-        this.Monto = monto;
+        Monto = monto;
     }
 
     public LocalDate getFecha_pago() {
@@ -95,11 +97,11 @@ public class Pago {
         Telefono_cliente = telefono_cliente;
     }
 
-    public int getTipo_Pago_Id_tipo_pago() {
-        return Tipo_Pago_Id_tipo_pago;
+    public Tipo_Pago gettP() {
+        return Tp;
     }
 
-    public void setTipo_Pago_Id_tipo_pago(int tipo_Pago_Id_tipo_pago) {
-        Tipo_Pago_Id_tipo_pago = tipo_Pago_Id_tipo_pago;
+    public void settP(Tipo_Pago tp) {
+        Tp = tp;
     }
 }

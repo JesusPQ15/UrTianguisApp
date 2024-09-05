@@ -3,6 +3,7 @@ package pe.edu.pe.tf.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.pe.tf.entities.Pago;
+import pe.edu.pe.tf.entities.Pedido;
 import pe.edu.pe.tf.repositories.IPagoRepository;
 import pe.edu.pe.tf.serviceinterface.IPagoService;
 
@@ -24,6 +25,11 @@ public class PagoServiceImplements implements IPagoService {
     }
 
     @Override
+    public Pago listId(int id) {
+        return pR.findById(id).orElse(new Pago());
+    }
+
+    @Override
     public void update(Pago p) {
         pR.save(p);
     }
@@ -31,5 +37,15 @@ public class PagoServiceImplements implements IPagoService {
     @Override
     public void delete(int id) {
         pR.deleteById(id);
+    }
+
+    @Override
+    public List<String[]> sumBySexService() {
+        return pR.sumBySex();
+    }
+
+    @Override
+    public List<String[]> sumByDepartmentService() {
+        return pR.sumByDepartment();
     }
 }

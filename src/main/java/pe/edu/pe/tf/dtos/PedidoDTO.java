@@ -1,18 +1,22 @@
 package pe.edu.pe.tf.dtos;
 
+import pe.edu.pe.tf.entities.Notificaciones;
+import pe.edu.pe.tf.entities.Pago;
+import pe.edu.pe.tf.entities.Usuario;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class PedidoDTO {
     private int Id_pedido;
+    private String Estado_pedido;
     private LocalDate Fecha_solicitud;
     private LocalDateTime Fecha_entrega;
     private LocalDate I_fecha_creacion;
     private String I_creado_por;
-    private int ESTADO_PEDIDO_Id_estado_pedido;
-    private int PAGO_Id_pago;
-    private int USUARIO_Id_usuario;
-    private int NOTIFICACION_Id_notificacion;
+    private Pago Pa;
+    private Usuario Us;
+    private Notificaciones No;
 
     public int getId_pedido() {
         return Id_pedido;
@@ -20,6 +24,14 @@ public class PedidoDTO {
 
     public void setId_pedido(int id_pedido) {
         Id_pedido = id_pedido;
+    }
+
+    public String getEstado_pedido() {
+        return Estado_pedido;
+    }
+
+    public void setEstado_pedido(String estado_pedido) {
+        Estado_pedido = estado_pedido;
     }
 
     public LocalDate getFecha_solicitud() {
@@ -54,35 +66,27 @@ public class PedidoDTO {
         I_creado_por = i_creado_por;
     }
 
-    public int getESTADO_PEDIDO_Id_estado_pedido() {
-        return ESTADO_PEDIDO_Id_estado_pedido;
+    public Pago getPa() {
+        return Pa;
     }
 
-    public void setESTADO_PEDIDO_Id_estado_pedido(int ESTADO_PEDIDO_Id_estado_pedido) {
-        this.ESTADO_PEDIDO_Id_estado_pedido = ESTADO_PEDIDO_Id_estado_pedido;
+    public void setPa(Pago pa) {
+        Pa = pa;
     }
 
-    public int getPAGO_Id_pago() {
-        return PAGO_Id_pago;
+    public Usuario getUs() {
+        return Us;
     }
 
-    public void setPAGO_Id_pago(int PAGO_Id_pago) {
-        this.PAGO_Id_pago = PAGO_Id_pago;
+    public void setUs(Usuario us) {
+        Us = us;
     }
 
-    public int getUSUARIO_Id_usuario() {
-        return USUARIO_Id_usuario;
+    public Notificaciones getNo() {
+        return No;
     }
 
-    public void setUSUARIO_Id_usuario(int USUARIO_Id_usuario) {
-        this.USUARIO_Id_usuario = USUARIO_Id_usuario;
-    }
-
-    public int getNOTIFICACION_Id_notificacion() {
-        return NOTIFICACION_Id_notificacion;
-    }
-
-    public void setNOTIFICACION_Id_notificacion(int NOTIFICACION_Id_notificacion) {
-        this.NOTIFICACION_Id_notificacion = NOTIFICACION_Id_notificacion;
+    public void setNo(Notificaciones no) {
+        No = no;
     }
 }

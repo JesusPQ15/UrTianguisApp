@@ -11,36 +11,40 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id_pedido;
+    @Column(name = "Estado_pedido",nullable = false, length = 20)
+    private String Estado_pedido;
     @Column(name = "Fecha_solicitud",nullable = false)
     private LocalDate Fecha_solicitud;
     @Column(name = "Fecha_entrega",nullable = false,length = 10)
     private LocalDateTime Fecha_entrega;
-    @Column(name = "I_fecha_creacion\n",nullable = false,length = 10)
+    @Column(name = "I_fecha_creacion",nullable = false,length = 10)
     private LocalDate I_fecha_creacion;
     @Column(name = "I_creado_por",nullable = false, length = 40)
     private String I_creado_por;
-    @Column(name = "ESTADO_PEDIDO_Id_estado_pedido",nullable = false)
-    private int ESTADO_PEDIDO_Id_estado_pedido;
-    @Column(name = "PAGO_Id_pago",nullable = false)
-    private int PAGO_Id_pago;
-    @Column(name = "USUARIO_Id_usuario",nullable = false)
-    private int USUARIO_Id_usuario;
-    @Column(name = "NOTIFICACION_Id_notificacion",nullable = false)
-    private int NOTIFICACION_Id_notificacion;
+    @OneToOne
+    @JoinColumn(name = "Id_pago")
+    private Pago Pa;
+    @ManyToOne
+    @JoinColumn(name = "Id_usuario")
+    private Usuario Us;
+    @ManyToOne
+    @JoinColumn(name = "Id_notificacion")
+    private Notificaciones Nt;
+
     public Pedido() {
 
     }
 
-    public Pedido(int id_pedido, LocalDate fecha_solicitud, LocalDateTime fecha_entrega, LocalDate i_fecha_creacion, String i_creado_por, int ESTADO_PEDIDO_Id_estado_pedido, int PAGO_Id_pago, int USUARIO_Id_usuario, int NOTIFICACION_Id_notificacion) {
+    public Pedido(int id_pedido, String estado_pedido, LocalDate fecha_solicitud, LocalDateTime fecha_entrega, LocalDate i_fecha_creacion, String i_creado_por, Pago pa, Usuario us, Notificaciones nt) {
         Id_pedido = id_pedido;
+        Estado_pedido = estado_pedido;
         Fecha_solicitud = fecha_solicitud;
         Fecha_entrega = fecha_entrega;
         I_fecha_creacion = i_fecha_creacion;
         I_creado_por = i_creado_por;
-        this.ESTADO_PEDIDO_Id_estado_pedido = ESTADO_PEDIDO_Id_estado_pedido;
-        this.PAGO_Id_pago = PAGO_Id_pago;
-        this.USUARIO_Id_usuario = USUARIO_Id_usuario;
-        this.NOTIFICACION_Id_notificacion = NOTIFICACION_Id_notificacion;
+        Pa = pa;
+        Us = us;
+        Nt = nt;
     }
 
     public int getId_pedido() {
@@ -49,6 +53,14 @@ public class Pedido {
 
     public void setId_pedido(int id_pedido) {
         Id_pedido = id_pedido;
+    }
+
+    public String getEstado_pedido() {
+        return Estado_pedido;
+    }
+
+    public void setEstado_pedido(String estado_pedido) {
+        Estado_pedido = estado_pedido;
     }
 
     public LocalDate getFecha_solicitud() {
@@ -83,35 +95,27 @@ public class Pedido {
         I_creado_por = i_creado_por;
     }
 
-    public int getESTADO_PEDIDO_Id_estado_pedido() {
-        return ESTADO_PEDIDO_Id_estado_pedido;
+    public Pago getPa() {
+        return Pa;
     }
 
-    public void setESTADO_PEDIDO_Id_estado_pedido(int ESTADO_PEDIDO_Id_estado_pedido) {
-        this.ESTADO_PEDIDO_Id_estado_pedido = ESTADO_PEDIDO_Id_estado_pedido;
+    public void setPa(Pago pa) {
+        Pa = pa;
     }
 
-    public int getPAGO_Id_pago() {
-        return PAGO_Id_pago;
+    public Usuario getUs() {
+        return Us;
     }
 
-    public void setPAGO_Id_pago(int PAGO_Id_pago) {
-        this.PAGO_Id_pago = PAGO_Id_pago;
+    public void setUs(Usuario us) {
+        Us = us;
     }
 
-    public int getUSUARIO_Id_usuario() {
-        return USUARIO_Id_usuario;
+    public Notificaciones getNt() {
+        return Nt;
     }
 
-    public void setUSUARIO_Id_usuario(int USUARIO_Id_usuario) {
-        this.USUARIO_Id_usuario = USUARIO_Id_usuario;
-    }
-
-    public int getNOTIFICACION_Id_notificacion() {
-        return NOTIFICACION_Id_notificacion;
-    }
-
-    public void setNOTIFICACION_Id_notificacion(int NOTIFICACION_Id_notificacion) {
-        this.NOTIFICACION_Id_notificacion = NOTIFICACION_Id_notificacion;
+    public void setNt(Notificaciones nt) {
+        Nt = nt;
     }
 }

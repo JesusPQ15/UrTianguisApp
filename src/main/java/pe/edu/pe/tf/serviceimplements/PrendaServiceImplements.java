@@ -3,6 +3,7 @@ package pe.edu.pe.tf.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.pe.tf.entities.Prenda;
+import pe.edu.pe.tf.entities.Tienda;
 import pe.edu.pe.tf.repositories.IPrendaRepository;
 import pe.edu.pe.tf.serviceinterface.IPrendaService;
 
@@ -19,6 +20,10 @@ public class PrendaServiceImplements implements IPrendaService {
     @Override
     public void insert(Prenda p) {
         pR.save(p);
+    }
+    @Override
+    public Prenda listId(int id) {
+        return pR.findById(id).orElse(new Prenda());
     }
     @Override
     public void update(Prenda p) {

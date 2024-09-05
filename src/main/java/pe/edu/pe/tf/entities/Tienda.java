@@ -2,6 +2,8 @@ package pe.edu.pe.tf.entities;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "tienda")
 public class Tienda {
@@ -10,23 +12,27 @@ public class Tienda {
     private int Id_tienda;
     @Column(name = "Nombre", nullable = false, length = 50)
     private String Nombre;
-    @Column(name = "Ubicacion", nullable = false, length = 100)
-    private String Ubicacion;
+    @Column(name = "Altitud", nullable = false, precision = 9, scale = 6)
+    private BigDecimal altitud;
+    @Column(name = "Latitud", nullable = false, precision = 9, scale = 6)
+    private BigDecimal Latitud;
     @Column(name = "Logo", nullable = false, length = 300)
     private String Logo;
-    @Column(name = "USUARIO_Id_usuario", nullable = false)
-    private int Id_usuario;
+    @ManyToOne
+    @JoinColumn(name = "Id_usuario")
+    private Usuario Us;
 
     public Tienda() {
 
     }
 
-    public Tienda(int id_tienda, String nombre, String ubicacion, String logo, int id_usuario) {
+    public Tienda(int id_tienda, String nombre, BigDecimal altitud, BigDecimal latitud, String logo, Usuario us) {
         Id_tienda = id_tienda;
         Nombre = nombre;
-        Ubicacion = ubicacion;
+        this.altitud = altitud;
+        Latitud = latitud;
         Logo = logo;
-        Id_usuario = id_usuario;
+        Us = us;
     }
 
     public int getId_tienda() {
@@ -45,12 +51,20 @@ public class Tienda {
         Nombre = nombre;
     }
 
-    public String getUbicacion() {
-        return Ubicacion;
+    public BigDecimal getAltitud() {
+        return altitud;
     }
 
-    public void setUbicacion(String ubicacion) {
-        Ubicacion = ubicacion;
+    public void setAltitud(BigDecimal altitud) {
+        this.altitud = altitud;
+    }
+
+    public BigDecimal getLatitud() {
+        return Latitud;
+    }
+
+    public void setLatitud(BigDecimal latitud) {
+        Latitud = latitud;
     }
 
     public String getLogo() {
@@ -61,11 +75,11 @@ public class Tienda {
         Logo = logo;
     }
 
-    public int getId_usuario() {
-        return Id_usuario;
+    public Usuario getUs() {
+        return Us;
     }
 
-    public void setId_usuario(int id_usuario) {
-        Id_usuario = id_usuario;
+    public void setUs(Usuario us) {
+        Us = us;
     }
 }

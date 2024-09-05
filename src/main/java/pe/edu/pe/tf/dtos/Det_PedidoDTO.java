@@ -1,12 +1,15 @@
 package pe.edu.pe.tf.dtos;
 
+import pe.edu.pe.tf.entities.Pedido;
+import pe.edu.pe.tf.entities.Prenda;
+
 public class Det_PedidoDTO {
     private int id_Det_Pedido;
     private int Cantidad;
     private float Precio_total;
     private float Sub_total;
-    private int PRENDA_Id_prenda;
-    private int PEDIDO_Id_pedido;
+    private Prenda Pr;
+    private Pedido Pe;
 
     public int getId_Det_Pedido() {
         return id_Det_Pedido;
@@ -40,19 +43,19 @@ public class Det_PedidoDTO {
         Sub_total = sub_total;
     }
 
-    public int getPRENDA_Id_prenda() {
-        return PRENDA_Id_prenda;
+    public Prenda getPr() {
+        return Pr;
     }
 
-    public void setPRENDA_Id_prenda(int PRENDA_Id_prenda) {
-        this.PRENDA_Id_prenda = PRENDA_Id_prenda;
+    public void setPr(Prenda pr) {
+        Pr = pr;
     }
 
-    public int getPEDIDO_Id_pedido() {
-        return PEDIDO_Id_pedido;
+    public Pedido getPe() {
+        return Pe;
     }
 
-    public void setPEDIDO_Id_pedido(int PEDIDO_Id_pedido) {
-        this.PEDIDO_Id_pedido = PEDIDO_Id_pedido;
+    public void setPe(Pedido pe) {
+        Pe = pe;
     }
 }

@@ -2,6 +2,8 @@ package pe.edu.pe.tf.dtos;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import pe.edu.pe.tf.entities.Departamento;
+import pe.edu.pe.tf.entities.Rol;
 
 import java.time.LocalDate;
 
@@ -20,8 +22,8 @@ public class UsuarioDTO {
     private LocalDate I_fecha_modificacion;
     private String I_creado_por;
     private String I_modificado_por;
-    private int DEPARTAMENTO_Id_departamento;
-    private int ROL_Id_rol;
+    private Departamento Dp;
+    private Rol Ro;
 
     public int getId_Usuario() {
         return Id_Usuario;
@@ -135,19 +137,19 @@ public class UsuarioDTO {
         I_modificado_por = i_modificado_por;
     }
 
-    public int getDEPARTAMENTO_Id_departamento() {
-        return DEPARTAMENTO_Id_departamento;
+    public Departamento getDp() {
+        return Dp;
     }
 
-    public void setDEPARTAMENTO_Id_departamento(int DEPARTAMENTO_Id_departamento) {
-        this.DEPARTAMENTO_Id_departamento = DEPARTAMENTO_Id_departamento;
+    public void setDp(Departamento dp) {
+        Dp = dp;
     }
 
-    public int getROL_Id_rol() {
-        return ROL_Id_rol;
+    public Rol getRo() {
+        return Ro;
     }
 
-    public void setROL_Id_rol(int ROL_Id_rol) {
-        this.ROL_Id_rol = ROL_Id_rol;
+    public void setRo(Rol ro) {
+        Ro = ro;
     }
 }

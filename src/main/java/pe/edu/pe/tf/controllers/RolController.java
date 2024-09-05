@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Rol")
+@RequestMapping("/rol")
 public class RolController {
     @Autowired
     private IRolService rS;
@@ -30,6 +30,7 @@ public class RolController {
     }
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){ rS.delete(id); }
+
     @GetMapping("/{id}")
     public  RolDTO listarID(@PathVariable("id") Integer id){
         ModelMapper m=new ModelMapper();

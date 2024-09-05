@@ -1,4 +1,6 @@
 package pe.edu.pe.tf.dtos;
+import pe.edu.pe.tf.entities.Tipo_Pago;
+
 import java.time.LocalDate;
 
 public class PagoDTO {
@@ -9,7 +11,7 @@ public class PagoDTO {
     private String Cod_validacion;
     private String Num_tarjeta_cliente;
     private String Telefono_cliente;
-    private int Tipo_Pago_Id_tipo_pago;
+    private Tipo_Pago Tp;
 
     public int getId_pago() {
         return Id_pago;
@@ -67,11 +69,11 @@ public class PagoDTO {
         Telefono_cliente = telefono_cliente;
     }
 
-    public int getTipo_Pago_Id_tipo_pago() {
-        return Tipo_Pago_Id_tipo_pago;
+    public Tipo_Pago getTipo_Pago() {
+        return Tp;
     }
 
-    public void setTipo_Pago_Id_tipo_pago(int tipo_Pago_Id_tipo_pago) {
-        Tipo_Pago_Id_tipo_pago = tipo_Pago_Id_tipo_pago;
+    public void setTipo_Pago(Tipo_Pago tp) {
+        Tp = tp;
     }
 }

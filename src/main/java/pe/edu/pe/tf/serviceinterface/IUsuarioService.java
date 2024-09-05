@@ -8,5 +8,6 @@ public interface IUsuarioService {
     public void insert(Usuario u);
     public void update(Usuario u);
     public void delete(int id);
+    public Usuario listId(int id);
     public String mesMenosUsuarios();
 }

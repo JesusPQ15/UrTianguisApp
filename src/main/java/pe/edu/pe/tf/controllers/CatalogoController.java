@@ -31,6 +31,12 @@ public class CatalogoController {
         Catalogo ve=m.map(dto, Catalogo.class);
         cP.insert(ve);
     }
+    @GetMapping("/{id}")
+    public CatalogoDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m=new ModelMapper();
+        CatalogoDTO dto=m.map(cP.listId(id),CatalogoDTO.class);
+        return dto;
+    }
     @PutMapping
     public void modificar(@RequestBody CatalogoDTO dto){
         ModelMapper m=new ModelMapper();

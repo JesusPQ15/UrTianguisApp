@@ -31,6 +31,12 @@ public class PedidoController {
         Pedido ve=m.map(dto,Pedido.class);
         pR.insert(ve);
     }
+    @GetMapping("/{id}")
+    public PedidoDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m=new ModelMapper();
+        PedidoDTO dto=m.map(pR.listId(id),PedidoDTO.class);
+        return dto;
+    }
     @PutMapping
     public void modificar(@RequestBody PedidoDTO dto){
         ModelMapper m=new ModelMapper();

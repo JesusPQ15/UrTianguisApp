@@ -3,6 +3,7 @@ package pe.edu.pe.tf.serviceimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.pe.tf.entities.Det_Pedido;
+import pe.edu.pe.tf.entities.Outfit;
 import pe.edu.pe.tf.entities.Prenda;
 import pe.edu.pe.tf.repositories.IDet_PedidoRepository;
 import pe.edu.pe.tf.serviceinterface.IDet_PedidoService;
@@ -22,11 +23,20 @@ public class Det_PedidoServiceImplements implements IDet_PedidoService {
         dP.save(p);
     }
     @Override
+    public Det_Pedido listId(int id) {
+        return dP.findById(id).orElse(new Det_Pedido());
+    }
+    @Override
     public void update(Det_Pedido p) {
         dP.save(p);
     }
     @Override
     public void delete(int id) {
         dP.deleteById(id);
+    }
+
+    @Override
+    public List<String[]> TotalxPrenda() {
+        return dP.TotalxPrenda();
     }
 }

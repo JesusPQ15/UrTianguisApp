@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.pe.tf.dtos.OutfitDTO;
+import pe.edu.pe.tf.dtos.PagoDTO;
 import pe.edu.pe.tf.entities.Outfit;
 import pe.edu.pe.tf.serviceinterface.IOutfitService;
 
@@ -28,6 +29,12 @@ public class OutfitController {
         ModelMapper m=new ModelMapper();
         Outfit ou=m.map(dto,Outfit.class);
         oS.insert(ou);
+    }
+    @GetMapping("/{id}")
+    public OutfitDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m=new ModelMapper();
+        OutfitDTO dto=m.map(oS.listId(id),OutfitDTO.class);
+        return dto;
     }
     @PutMapping
     public void modificar(@RequestBody OutfitDTO dto){

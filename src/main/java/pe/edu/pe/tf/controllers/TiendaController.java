@@ -27,9 +27,15 @@ public class TiendaController {
         ModelMapper m=new ModelMapper();
         Tienda ve=m.map(dto,Tienda.class);
         tR.insert(ve);
-
-
     }
+
+    @GetMapping("/{id}")
+    public TiendaDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m=new ModelMapper();
+        TiendaDTO dto=m.map(tR.listId(id),TiendaDTO.class);
+        return dto;
+    }
+
     @PutMapping
     public void modificar(@RequestBody TiendaDTO dto){
         ModelMapper m=new ModelMapper();

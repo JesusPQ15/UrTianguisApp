@@ -2,13 +2,17 @@ package pe.edu.pe.tf.dtos;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import pe.edu.pe.tf.entities.Usuario;
+
+import java.math.BigDecimal;
 
 public class TiendaDTO {
     private int Id_tienda;
     private String Nombre;
-    private String Ubicacion;
+    private BigDecimal Altitud;
+    private BigDecimal Latitud;
     private String Logo;
-    private int Id_usuario;
+    private Usuario Us;
 
     public int getId_tienda() {
         return Id_tienda;
@@ -26,12 +30,20 @@ public class TiendaDTO {
         Nombre = nombre;
     }
 
-    public String getUbicacion() {
-        return Ubicacion;
+    public BigDecimal getAltitud() {
+        return Altitud;
     }
 
-    public void setUbicacion(String ubicacion) {
-        Ubicacion = ubicacion;
+    public void setAltitud(BigDecimal altitud) {
+        Altitud = altitud;
+    }
+
+    public BigDecimal getLatitud() {
+        return Latitud;
+    }
+
+    public void setLatitud(BigDecimal latitud) {
+        Latitud = latitud;
     }
 
     public String getLogo() {
@@ -42,11 +54,11 @@ public class TiendaDTO {
         Logo = logo;
     }
 
-    public int getId_usuario() {
-        return Id_usuario;
+    public Usuario getUs() {
+        return Us;
     }
 
-    public void setId_usuario(int id_usuario) {
-        Id_usuario = id_usuario;
+    public void setUs(Usuario us) {
+        Us = us;
     }
 }

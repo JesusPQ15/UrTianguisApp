@@ -8,6 +8,7 @@ import java.util.List;
 public interface IPedidoService {
     public List<Pedido> list();
     public void insert(Pedido p);
+    public Pedido listId(int id);
     public void update(Pedido p);
     public void delete(int id);
 }

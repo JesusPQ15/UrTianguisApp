@@ -22,6 +22,10 @@ public class PedidoServiceImplements implements IPedidoService {
         pR.save(p);
     }
     @Override
+    public Pedido listId(int id) {
+        return pR.findById(id).orElse(new Pedido());
+    }
+    @Override
     public void update(Pedido p) {
         pR.save(p);
     }

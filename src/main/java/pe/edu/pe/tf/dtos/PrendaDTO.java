@@ -1,5 +1,8 @@
 package pe.edu.pe.tf.dtos;
 
+import pe.edu.pe.tf.entities.Tienda;
+import pe.edu.pe.tf.entities.Tipo_Prenda;
+
 import java.time.LocalDate;
 
 public class PrendaDTO {
@@ -14,8 +17,8 @@ public class PrendaDTO {
     private LocalDate I_fecha_modificacion;
     private String I_creado_por;
     private String I_modificado_por;
-    private int TIPO_PRENDA_Id_tipo_prenda;
-    private int TIENDA_Id_tienda;
+    private Tipo_Prenda Tp;
+    private Tienda Ti;
 
     public int getId_prenda() {
         return Id_prenda;
@@ -105,19 +108,19 @@ public class PrendaDTO {
         I_modificado_por = i_modificado_por;
     }
 
-    public int getTIPO_PRENDA_Id_tipo_prenda() {
-        return TIPO_PRENDA_Id_tipo_prenda;
+    public Tipo_Prenda getTp() {
+        return Tp;
     }
 
-    public void setTIPO_PRENDA_Id_tipo_prenda(int TIPO_PRENDA_Id_tipo_prenda) {
-        this.TIPO_PRENDA_Id_tipo_prenda = TIPO_PRENDA_Id_tipo_prenda;
+    public void setTp(Tipo_Prenda tp) {
+        Tp = tp;
     }
 
-    public int getTIENDA_Id_tienda() {
-        return TIENDA_Id_tienda;
+    public Tienda getTii() {
+        return Ti;
     }
 
-    public void setTIENDA_Id_tienda(int TIENDA_Id_tienda) {
-        this.TIENDA_Id_tienda = TIENDA_Id_tienda;
+    public void setTi(Tienda ti) {
+        Ti = ti;
     }
 }

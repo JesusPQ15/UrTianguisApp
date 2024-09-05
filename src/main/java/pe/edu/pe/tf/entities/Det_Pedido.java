@@ -16,21 +16,23 @@ public class Det_Pedido
     private Float Precio_total;
     @Column(name = "Sub_total",nullable = false,length = 10)
     private Float Sub_total;
-    @Column(name = "PRENDA_Id_prenda",nullable = false)
-    private int PRENDA_Id_prenda;
-    @Column(name = "PEDIDO_Id_pedido",nullable = false)
-    private int PEDIDO_Id_pedido;
+    @ManyToOne
+    @JoinColumn(name = "Id_prenda")
+    private Prenda Pr;
+    @ManyToOne
+    @JoinColumn(name = "Id_pedido")
+    private Pedido Pe;
     public Det_Pedido() {
 
     }
 
-    public Det_Pedido(int id_Det_Pedido, int cantidad, Float precio_total, Float sub_total, int PRENDA_Id_prenda, int PEDIDO_Id_pedido) {
+    public Det_Pedido(int id_Det_Pedido, int cantidad, Float precio_total, Float sub_total, Prenda pr, Pedido pe) {
         Id_Det_Pedido = id_Det_Pedido;
         Cantidad = cantidad;
         Precio_total = precio_total;
         Sub_total = sub_total;
-        this.PRENDA_Id_prenda = PRENDA_Id_prenda;
-        this.PEDIDO_Id_pedido = PEDIDO_Id_pedido;
+        Pr = pr;
+        Pe = pe;
     }
 
     public int getId_Det_Pedido() {
@@ -65,19 +67,19 @@ public class Det_Pedido
         Sub_total = sub_total;
     }
 
-    public int getPRENDA_Id_prenda() {
-        return PRENDA_Id_prenda;
+    public Prenda getPr() {
+        return Pr;
     }
 
-    public void setPRENDA_Id_prenda(int PRENDA_Id_prenda) {
-        this.PRENDA_Id_prenda = PRENDA_Id_prenda;
+    public void setPr(Prenda pr) {
+        Pr = pr;
     }
 
-    public int getPEDIDO_Id_pedido() {
-        return PEDIDO_Id_pedido;
+    public Pedido getPe() {
+        return Pe;
     }
 
-    public void setPEDIDO_Id_pedido(int PEDIDO_Id_pedido) {
-        this.PEDIDO_Id_pedido = PEDIDO_Id_pedido;
+    public void setPe(Pedido pe) {
+        Pe = pe;
     }
 }

@@ -3,6 +3,7 @@ package pe.edu.pe.tf.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.pe.tf.dtos.TiendaDTO;
 import pe.edu.pe.tf.dtos.UsuarioDTO;
 import pe.edu.pe.tf.entities.Usuario;
 import pe.edu.pe.tf.serviceinterface.IUsuarioService;
@@ -28,6 +29,14 @@ public class UsuarioController {
         Usuario us=m.map(dto,Usuario.class);
         uS.insert(us);
     }
+
+    @GetMapping("/{id}")
+    public TiendaDTO listarId(@PathVariable("id") Integer id){
+        ModelMapper m=new ModelMapper();
+        TiendaDTO dto=m.map(uS.listId(id),TiendaDTO.class);
+        return dto;
+    }
+
     @PutMapping
     public void modificar(@RequestBody UsuarioDTO dto){
         ModelMapper m=new ModelMapper();
