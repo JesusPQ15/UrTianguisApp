@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2608364-150b-463c-8549-a96d7da3cf65" name="Changes" comment="Avance_Sem3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/dtos/CantPagoxTipoPagoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/dtos/CantPrendaxTiendaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/dtos/Pagos_AgrupxMesxMetodoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/dtos/TotalxPrendaDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/controllers/Det_PedidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/controllers/Det_PedidoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/controllers/PagoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/controllers/PagoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/controllers/PrendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/controllers/PrendaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/dtos/DepartamentoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/dtos/DepartamentoDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/dtos/TiendaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/dtos/TiendaDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/entities/Departamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/entities/Departamento.java" afterDir="false" />
@@ -15,10 +20,14 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/entities/Tienda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/entities/Tienda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/repositories/IDet_PedidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/repositories/IDet_PedidoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/repositories/IPagoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/repositories/IPagoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/repositories/IPrendaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/repositories/IPrendaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/repositories/IUsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/repositories/IUsuarioRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceimplements/Det_PedidoServiceImplements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceimplements/Det_PedidoServiceImplements.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceimplements/PagoServiceImplements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceimplements/PagoServiceImplements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceimplements/PrendaServiceImplements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceimplements/PrendaServiceImplements.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceinterface/IDet_PedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceinterface/IDet_PedidoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceinterface/IPagoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceinterface/IPagoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceinterface/IPrendaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pe/tf/serviceinterface/IPrendaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,12 +63,12 @@
     &quot;assignee&quot;: &quot;FabriSSJ10&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/FabriSSJ10/UrTianguisApp.git",
-    "accountId": "5ca31575-1db0-4ac3-9c9e-c8f854f5b1ad"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/FabriSSJ10/UrTianguisApp.git&quot;,
+    &quot;accountId&quot;: &quot;df7ae1a2-9bef-4599-861b-6dad1fefd2c3&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -86,7 +95,7 @@
     "Spring Boot.Application.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/jesus/OneDrive/Documentos/TF/TF_0.9/UrTianguisDevelopment_Sem3",
+    "last_opened_file_path": "C:/Users/fabri/Desktop/UPC/ARQUI WEB/BACKUPS/BACKUP2/BACKUP3/BACKUP4/UrTianguisDevelopment_Sem3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -148,7 +157,8 @@
       <workItem from="1725250932450" duration="368000" />
       <workItem from="1725313913925" duration="735000" />
       <workItem from="1725359124476" duration="7541000" />
-      <workItem from="1725490639466" duration="4154000" />
+      <workItem from="1725474714984" duration="3141000" />
+      <workItem from="1725498879724" duration="3853000" />
     </task>
     <task id="LOCAL-00001" summary="Avance_Sem3">
       <option name="closed" value="true" />
