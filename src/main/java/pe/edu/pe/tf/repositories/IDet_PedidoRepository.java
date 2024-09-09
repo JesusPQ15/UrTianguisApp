@@ -9,9 +9,11 @@ import java.util.List;
 
 @Repository
 public interface IDet_PedidoRepository extends JpaRepository<Det_Pedido, Integer> {
-    @Query(value ="select tp.tipo_prenda, Sum(dp.precio_total) as TotalRecaudado from det_pedido as dp \n" +
-            "join prenda as p on dp.id_prenda=p.id_prenda\n" +
-            "join tipo_prenda as tp on p.id_tipo_prenda=tp.id_tipo_prenda\n" +
-            "group by tp.tipo_prenda" ,nativeQuery = true)
-    public List<String[]>TotalxPrenda();
+    @Query(
+            value = " select tp.tipo_prenda, Sum(dp.precio_total) as TotalRecaudado " +
+                    " from det_pedido as dp \njoin prenda as p on dp.id_prenda=p.id_prenda \n" +
+                    " join tipo_prenda as tp on p.id_tipo_prenda=tp.id_tipo_prenda\ngroup by tp.tipo_prenda",
+            nativeQuery = true
+    )
+    List<String[]> TotalxPrenda();
 }

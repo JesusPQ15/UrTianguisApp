@@ -34,9 +34,7 @@ public class Det_PedidoServiceImplements implements IDet_PedidoService {
     public void delete(int id) {
         dP.deleteById(id);
     }
-
-    @Override
     public List<String[]> TotalxPrenda() {
-        return dP.TotalxPrenda();
+        return this.dP.TotalxPrenda();
     }
 }

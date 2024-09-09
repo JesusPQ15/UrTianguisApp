@@ -48,4 +48,11 @@ public class PagoServiceImplements implements IPagoService {
     public List<String[]> sumByDepartmentService() {
         return pR.sumByDepartment();
     }
+
+    @Override
+    public List<String[]> pagosxtipodepago(){return pR.cantpagosxtipodepago();}
+
+    @Override
+    public List<String[]>pgsagrupadosxmesxmetodo(){return pR.pagos_agrupadosxmesxmetodo();}
+
 }

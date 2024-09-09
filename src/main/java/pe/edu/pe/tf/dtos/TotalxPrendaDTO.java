@@ -1,22 +1,30 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package pe.edu.pe.tf.dtos;
 
 public class TotalxPrendaDTO {
     private String Tipo_Prenda;
     private double TotalRecaudado;
 
+    public TotalxPrendaDTO() {
+    }
+
     public String getTipo_Prenda() {
-        return Tipo_Prenda;
+        return this.Tipo_Prenda;
     }
 
     public void setTipo_Prenda(String tipo_Prenda) {
-        Tipo_Prenda = tipo_Prenda;
+        this.Tipo_Prenda = tipo_Prenda;
     }
 
     public double getTotalRecaudado() {
-        return TotalRecaudado;
+        return this.TotalRecaudado;
     }
 
     public void setTotalRecaudado(double totalRecaudado) {
-        TotalRecaudado = totalRecaudado;
+        this.TotalRecaudado = totalRecaudado;
     }
 }

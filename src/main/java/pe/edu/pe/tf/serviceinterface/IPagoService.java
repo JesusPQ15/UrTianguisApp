@@ -13,5 +13,7 @@ public interface IPagoService {
     public void delete(int id);
     List<String[]> sumBySexService();
     List<String[]> sumByDepartmentService();
+    List<String[]> pagosxtipodepago();
+    List<String[]> pgsagrupadosxmesxmetodo();
 }
 
